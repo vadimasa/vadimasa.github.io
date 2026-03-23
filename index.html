@@ -22,24 +22,20 @@
 </head>
 <body>
     <video 
-        id="myVideo"
-        autoplay
-        playsinline 
-        loop
-    >
+        id="myVideo" autoplay muted playsinline loop>
         <!-- Укажите правильное имя вашего видеофайла -->
         <source src="video.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
-
+    
+    <button id="unmuteBtn">Включить звук</button>
+    
     <script>
-        // Страховка на случай, если автозапуск заблокирован
-        var video = document.getElementById('myVideo');
-        video.play().catch(function(error) {
-            // Если видео не запустилось, попросим пользователя коснуться экрана
-            document.body.addEventListener('touchstart', function() {
-                video.play();
-            }, { once: true });
+        const video = document.getElementById('myVideo');
+        const btn = document.getElementById('unmuteBtn');
+        btn.addEventListener('click', () => {
+        video.muted = false;
+        btn.style.display = 'none';
         });
     </script>
 </body>

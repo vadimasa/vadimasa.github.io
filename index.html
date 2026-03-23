@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Видео</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <video 
+        id="myVideo"
+        autoplay 
+        muted 
+        playsinline 
+        loop
+    >
+        <!-- Укажите правильное имя вашего видеофайла -->
+        <source src="video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+
+    <script>
+        // Страховка на случай, если автозапуск заблокирован
+        var video = document.getElementById('myVideo');
+        video.play().catch(function(error) {
+            // Если видео не запустилось, попросим пользователя коснуться экрана
+            document.body.addEventListener('touchstart', function() {
+                video.play();
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
